@@ -8,9 +8,9 @@ module.exports = function(app){
       var nome = req.body.nome;
       if(email && nome){
         var usuario = req.body.usuario;
-	usuario['contatos'] = [];
-	req.session.usuario = usuario;
-	res.redirect('/contatos');
+	      usuario['contatos'] = [];
+      	req.session.usuario = usuario;
+      	res.redirect('/contatos');
       }else{
         res.send(req.body);
       }

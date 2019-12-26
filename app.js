@@ -19,7 +19,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-load('models').then('controllers')                .then('routes').into(app);
+load('models')
+.then('controllers').then('routes').into(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
