@@ -4,14 +4,17 @@ module.exports = function(app){
       res.render('home/index');
     },
     login : function(req, res){
-      var email = req.body.usuario.email;
-      var nome = req.body.usuario.nome;
+      var email = req.body.email;
+      var nome = req.body.nome;
       if(email && nome){
-        console.log('login ok');
+        res.send('login ok');
       }else{
-        res.redirect('/');
+        res.send(req.body);
       }
-    }
+    },
+    logout : function(req, res){
+	res.redirect('/');
+	}
   }
   return HomeController;
 };
