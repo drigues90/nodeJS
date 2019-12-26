@@ -1,4 +1,4 @@
 module.exports = function(app){
-  var contatos = app.controller.contatos;
+  var contatos = app.controllers.contatos;
   app.get('/',contatos.index);
 };
