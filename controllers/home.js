@@ -7,12 +7,16 @@ module.exports = function(app){
       var email = req.body.email;
       var nome = req.body.nome;
       if(email && nome){
-        res.send('login ok');
+        var usuario = req.body.usuario;
+	usuario['contatos'] = [];
+	req.session.usuario = usuario;
+	res.redirect('/contatos');
       }else{
         res.send(req.body);
       }
     },
     logout : function(req, res){
+	req.sessio.destroy();
 	res.redirect('/');
 	}
   }

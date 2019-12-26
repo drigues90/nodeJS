@@ -8,9 +8,6 @@ var load = require('express-load');
 
 var app = express();
 
-load('models').then('controllers')
-.then('routes').into(app);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,6 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+load('models').then('controllers')                .then('routes').into(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
