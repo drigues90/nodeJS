@@ -3,9 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var load = require('express-load');
-
+var consign = require('consign');
+var session = require('express-session');
 var app = express();
 
 // view engine setup
@@ -16,10 +15,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'secret'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-load('models')
+consign().include('models')
 .then('controllers').then('routes').into(app);
 
 // catch 404 and forward to error handler

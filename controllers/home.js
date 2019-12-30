@@ -4,19 +4,23 @@ module.exports = function(app){
       res.render('home/index');
     },
     login : function(req, res){
-      var email = req.body.usuario.email;
-      var nome = req.body.usuario.nome;
+      var email = req.body.email;
+      var nome = req.body.nome;
       if(email && nome){
-        var usuario = req.body.usuario;
-        usuario['contatos'] = [];
-      //req.session.usuario = usuario;
+       var usuario = {
+         email : email,
+         nome : nome
+       };
+       console.log(usuario);
+	      usuario['contatos'] = [];
+      	req.session.usuario = usuario;
       	res.redirect('/contatos');
       }else{
         res.send(req.body);
       }
     },
     logout : function(req, res){
-	//req.sessio.destroy();
+	req.session.destroy();
 	res.redirect('/');
 	}
   }
