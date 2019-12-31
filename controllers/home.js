@@ -11,8 +11,7 @@ module.exports = function(app){
          email : email,
          nome : nome
        };
-       console.log(usuario);
-	      usuario['contatos'] = [];
+	      usuario.contatos = [];
       	req.session.usuario = usuario;
       	res.redirect('/contatos');
       }else{
