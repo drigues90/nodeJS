@@ -15,7 +15,7 @@ module.exports = function(app){
       	req.session.usuario = usuario;
       	res.redirect('/contatos');
       }else{
-        res.send(req.body);
+        res.redirect('/');
       }
     },
     logout : function(req, res){
