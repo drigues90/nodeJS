@@ -15,6 +15,7 @@ module.exports = function(app){
     show : function(req,res){
       var id = req.params.id;
       var contato = req.session.usuario.contatos[id];
+      console.log('recupertato da sessao',contato);
       var params = {contato: contato, id: id};
       res.render('contatos/show',params);
     }

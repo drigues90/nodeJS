@@ -8,12 +8,15 @@
     <input type="hidden" name="_method"
     value="delete">
     <p><label>Nome</label> 
-    <% contato.nome %></p>
+    <%- contato.nome %></p>
     <p><label>Email</label>
-    <% contato.email %></p>
+    <%- contato.email %></p>
     <p>
       <button type="submit">Excluir</button>
       <a href="/contato/<%id%>/editar">Editar</a>
     </p>
   </form>
-<section>
+<section
+
+<% include ../footer %>
+<% include ../exit %>
