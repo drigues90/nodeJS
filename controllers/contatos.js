@@ -18,6 +18,19 @@ module.exports = function(app){
       console.log('recupertato da sessao',contato);
       var params = {contato: contato, id: id};
       res.render('contatos/show',params);
+    },
+    edit : function(req,res){
+      var id = req.params.id;
+      var usuario = req.session.usuario;
+      var contato = usuario.contatos[id];
+      var params = {contato: contato,id :id};
+      res.render('contatos/edit',params);
+    },
+    update : function(req,res){
+      var contato = req.body.contato;
+      var usuario = req.session.usuario;
+      usuario.contatos[req.params.id] = contato;
+      res.redirect('/contatos');
     }
   }
   return ContatosController;
