@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var consign = require('consign');
 var session = require('express-session');
+var methodOverride = require('method-override');
 var app = express();
 
 // view engine setup
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({secret: 'secret'}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 
 consign().include('models')
