@@ -31,6 +31,12 @@ module.exports = function(app){
       var usuario = req.session.usuario;
       usuario.contatos[req.params.id] = contato;
       res.redirect('/contatos');
+    },
+    destroy: function(req,res){
+      var usuario = req.session.usuario;
+      var id = req.params.id;
+      usuario.contatos.splice(id,1) // 1 quantidade de elementos a serem removidos do array;
+      res.redirect('/contatos');
     }
   }
   return ContatosController;
