@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
  
   // render the error page
   res.status(err.status || 500);
-  res.render('server-error');
+  res.render('server-error',err.message);
 
 
 });
